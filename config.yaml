@@ -1,0 +1,32 @@
+model:
+  # Architecture
+  d-model: 512
+  nhead: 8
+  num-decoder-layers: 6
+  dim-feedforward: 2048
+  dropout: 0.1
+
+  # Sequence + tokenizer
+  vocab-size: 10000
+  max-seq-len: 256
+
+  # Special token ids
+  tokenizer:
+    pad-token-id: 0
+    bos-token-id: 1
+    eos-token-id: 2
+
+train:
+  batch-size: 64
+  learning-rate: 0.0001
+  num-epochs: 3
+  warmup-steps: 500
+  accumulation-steps: 1
+
+dataset:
+  dir-path: dataset
+  file-name: dialogue.txt
+  dataset-name: cornell
+
+save:
+  checkpoints-dir: checkpoints

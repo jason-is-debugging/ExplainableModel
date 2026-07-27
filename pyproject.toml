@@ -1,0 +1,29 @@
+[project]
+name = "explainablemodel"
+version = "0.1.0"
+description = "An exploration of explainability"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "torch==2.7.0",
+    "torchvision==0.22.0",
+    "einops>=0.6.0",
+    "tqdm>=4.65.0",
+    "numpy>=1.24.0",
+    "pandas>=1.5.3",
+    "matplotlib>=3.7.0",
+    "pyyaml>=6.0.3",
+    "pydantic-settings>=2.14.2",
+    "datasets>=5.0.0",
+]
+
+[tool.uv]
+# Pull PyTorch from the CUDA 12.6 wheel index — matches the RTX 4060 driver
+# (CUDA 13.2 is the driver ceiling; torch 2.7 cu126 runs fine on it).
+index = [
+    { name = "pytorch-cu126", url = "https://download.pytorch.org/whl/cu126", explicit = true },
+]
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu126" }
+torchvision = { index = "pytorch-cu126" }
